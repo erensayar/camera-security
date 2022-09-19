@@ -10,8 +10,9 @@ Web module provide live video stream and controll the camera and light. To do th
 
 * Java
 * Spring Boot
-* JSerialComm
+* Spring Security
 * Thymeleaf
+* JSerialComm
 * Vanilla JS
 * Firmata (Canceled. Firmata codes put in the comment line as a note)
 * Arduino
@@ -39,10 +40,12 @@ Web module provide live video stream and controll the camera and light. To do th
 * Arduino port be suitable for connection, i mean port shouldn't used by another program.
 * Set Camera Name on code. (You need read the code and need understand relevant place)
 
+# TODO
+Block camera port from external clients. I mean client shold not be acces directly camera stream! Client should access camera stream via web application! Not directly!
+
 # Home Page 
 
 ![Home](/doc/home.png)
-
 
 
 

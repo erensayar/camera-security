@@ -24,6 +24,7 @@
 </style>
 
 <body>
+    <input type="text" hidden style="display: none" th:value="${cameraPort}" id="cameraPortId" />
 
     <div class="row pt-4 text-center">
         <div class="col-2"></div>
@@ -91,7 +92,7 @@
 
     function getCurrentUrl() {
         const url = new URL(window.location.href);
-        return 'http://' + url.hostname + ':9999';
+        return 'http://' + url.hostname + ':' + document.getElementById("cameraPortId").value;
     }
 </script>
 

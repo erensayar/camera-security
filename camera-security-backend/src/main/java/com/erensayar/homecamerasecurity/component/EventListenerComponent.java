@@ -6,6 +6,7 @@ import com.github.sarxos.webcam.WebcamStreamer;
 import java.awt.Dimension;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.event.ApplicationStartedEvent;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
@@ -14,8 +15,12 @@ import org.springframework.stereotype.Component;
 @Component
 public class EventListenerComponent {
 
+  // Dependencies
   private final SerialCommunicationService serialCommunicationService;
 
+  // Constants
+  @Value("${camera.port}")
+  private int cameraPort;
   private static final String WEBCAM_SHORT_NAME = "LifeCam";
 
   @EventListener(ApplicationStartedEvent.class)
@@ -46,7 +51,7 @@ public class EventListenerComponent {
     //Webcam w = Webcam.getWebcamByName(webcamFullName); // Linux : USB2.0 PC CAMERA /dev/video2 // Win : USB2.0 PC CAMERA 1
     Webcam w = Webcam.getWebcamByName("Microsoft® LifeCam HD-3000: Mi /dev/video2"); // Linux : USB2.0 PC CAMERA /dev/video2 // Win : USB2.0 PC CAMERA 1
     w.setViewSize(new Dimension(640, 480));
-    new WebcamStreamer(9999, w, 30, true);
+    new WebcamStreamer(cameraPort, w, 30, true);
     do {
       try {
         Thread.sleep(5000);
