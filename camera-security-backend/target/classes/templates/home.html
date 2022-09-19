@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="../static/bootstrap-4.5.0.min.css">
+</head>
+
+<style>
+    .bt {
+        margin-right: 5px;
+        font-size: x-large;
+    }
+
+    body {
+        background-color: #141414;
+    }
+
+    .horizontal-center {
+        text-align: center;
+    }
+</style>
+
+<body>
+
+    <div class="row pt-4 text-center">
+        <div class="col-2"></div>
+        <div class="col-8">
+            <img id="stream" style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 25%);" />
+        </div>
+        <div class="col-2"></div>
+    </div>
+
+
+    <div class="row pt-2">
+        <div class="col"></div>
+        <div class="col-6">
+            <div class="horizontal-center">
+                <button class="btn btn-info bt" onclick="communication('/motor/left')">Motor Turn Left</button>
+                <button class="btn btn-info bt" onclick="communication('/motor/right')">Motor Turn Right</button>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <div class="row pt-2">
+        <div class="col"></div>
+        <div class="col-6">
+            <div class="horizontal-center">
+                <button class="btn btn-secondary bt" onclick="communication('/motor/all/left')">Turn All The Way To The Left</button>
+                <button class="btn btn-secondary bt" onclick="communication('/motor/all/right')">Turn All The Way To The Right</button>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <div class="row pt-1">
+        <div class="col"></div>
+        <div class="col">
+            <div class="horizontal-center">
+                <button class="btn btn-success bt" onclick="communication('/led/on')">Light Turn On</button>
+                <button class="btn btn-danger bt" onclick="communication('/led/off')">Light Turn Off</button>
+            </div>
+        </div>
+        <div class="col"></div>
+    </div>
+
+    <script src="../static/axios.min-0.27.2.js"></script>
+</body>
+
+<script>
+    function communication(endpoint) {
+        axios({
+            method: 'get',
+            url: endpoint
+        }).then(function (response) {
+            if (response.data === "OK") {
+                console.log("OK" + endpoint);
+            } else {
+                console.log("Unsuccessful!");
+            }
+        });
+    }
+
+    window.onload = function () {
+        const url = new URL(window.location.href);
+        document.getElementById('stream').src = getCurrentUrl();
+    };
+
+    function getCurrentUrl() {
+        const url = new URL(window.location.href);
+        return 'http://' + url.hostname + ':9999';
+    }
+</script>
+
+</html>
