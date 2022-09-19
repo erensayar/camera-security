@@ -5,7 +5,7 @@
     <artifactId>hamecamerasecurity</artifactId>
     <version>1.0.0-RELEASED</version>
     <packaging>jar</packaging>
-    <description>Security Camera Control And Video Stream</description>
+    <description>Security Camera Control And Video Stream Web Application</description>
 
     <parent>
         <groupId>org.springframework.boot</groupId>

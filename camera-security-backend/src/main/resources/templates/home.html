@@ -6,67 +6,33 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home</title>
     <link rel="stylesheet" href="../static/bootstrap-4.5.0.min.css">
+    <link rel="stylesheet" href="../static/home.css">
 </head>
-
-<style>
-    .bt {
-        margin-right: 5px;
-        font-size: x-large;
-    }
-
-    body {
-        background-color: #141414;
-    }
-
-    .horizontal-center {
-        text-align: center;
-    }
-</style>
 
 <body>
     <input type="text" hidden style="display: none" th:value="${cameraPort}" id="cameraPortId" />
 
-    <div class="row pt-4 text-center">
-        <div class="col-2"></div>
-        <div class="col-8">
-            <img id="stream" style="display: block;-webkit-user-select: none;margin: auto;background-color: hsl(0, 0%, 25%);" />
-        </div>
-        <div class="col-2"></div>
+    <div class="text-center pt-4">
+        <img id="stream" style="display: block; -webkit-user-select: none; margin: auto;" />
     </div>
 
-
-    <div class="row pt-2">
-        <div class="col"></div>
-        <div class="col-6">
-            <div class="horizontal-center">
-                <button class="btn btn-info bt" onclick="communication('/motor/left')">Motor Turn Left</button>
-                <button class="btn btn-info bt" onclick="communication('/motor/right')">Motor Turn Right</button>
-            </div>
-        </div>
-        <div class="col"></div>
+    <div class="tbl-cnt">
+        <table>
+            <tr>
+                <td><div class="table-bt" style="background-color: #581845;" onclick="communication('/motor/left')">Motor Turn Left</div></td>
+                <td><div class="table-bt" style="background-color: #900C3F;" onclick="communication('/motor/right')">Motor Turn Right</div></td>
+            </tr>
+            <tr>
+                <td><div class="table-bt" style="background-color: #aa4a8d;" onclick="communication('/motor/all/left')">Turn All The Way To The Left</div></td>
+                <td><div class="table-bt" style="background-color: #d4043f;" onclick="communication('/motor/all/right')">Turn All The Way To The Right</div></td>
+            </tr>
+            <tr>
+                <td><div class="table-bt" style="background-color: #FFC30F;" onclick="communication('/led/on')">Light Turn On</div></td>
+                <td><div class="table-bt" style="background-color: #FF5733;" onclick="communication('/led/off')">Light Turn Off</div></td>
+            </tr>
+        </table>
     </div>
 
-    <div class="row pt-2">
-        <div class="col"></div>
-        <div class="col-6">
-            <div class="horizontal-center">
-                <button class="btn btn-secondary bt" onclick="communication('/motor/all/left')">Turn All The Way To The Left</button>
-                <button class="btn btn-secondary bt" onclick="communication('/motor/all/right')">Turn All The Way To The Right</button>
-            </div>
-        </div>
-        <div class="col"></div>
-    </div>
-
-    <div class="row pt-1">
-        <div class="col"></div>
-        <div class="col">
-            <div class="horizontal-center">
-                <button class="btn btn-success bt" onclick="communication('/led/on')">Light Turn On</button>
-                <button class="btn btn-danger bt" onclick="communication('/led/off')">Light Turn Off</button>
-            </div>
-        </div>
-        <div class="col"></div>
-    </div>
 
     <script src="../static/axios.min-0.27.2.js"></script>
 </body>
@@ -86,7 +52,6 @@
     }
 
     window.onload = function () {
-        const url = new URL(window.location.href);
         document.getElementById('stream').src = getCurrentUrl();
     };
 

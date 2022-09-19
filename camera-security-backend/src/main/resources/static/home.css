@@ -1,0 +1,68 @@
+.bt {
+    margin-right: 5px;
+    font-size: x-large;
+}
+
+body {
+    background-color: #141414;
+}
+
+.horizontal-center {
+    text-align: center;
+}
+
+.tbl-cnt {
+    padding-top: 1em;
+    padding-inline: 2em;
+}
+
+.table-bt {
+    cursor: pointer;
+    height: 7em;
+    text-align: center;
+    padding: 2em;
+
+}
+
+table {
+    margin: auto;
+}
+
+td {
+    border-radius: 10px;
+}
+
+@media only screen and (max-width: 640px) {
+    #stream {
+        height: 405px;
+        width: 540px;
+    }
+}
+
+@media only screen and (max-width: 540px) {
+    #stream {
+        height: 330px;
+        width: 440px;
+    }
+}
+
+@media only screen and (max-width: 440px) {
+    #stream {
+        height: 255px;
+        width: 340px;
+    }
+}
+
+@media only screen and (max-width: 340px) {
+    #stream {
+        height: 180px;
+        width: 240px;
+    }
+}
+
+@media only screen and (max-width: 240px) {
+    #stream {
+        height: 105px;
+        width: 140px;
+    }
+}
